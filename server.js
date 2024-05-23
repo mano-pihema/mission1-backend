@@ -9,7 +9,6 @@ server.use(express.json())
 server.use(cors({ origin: process.env.CLIENT }))
 
 server.use(express.static(path.join(__dirname, 'public')))
-//server.use('/public', express.static(path.join(__dirname, '../public')))
 
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env
 
@@ -35,7 +34,6 @@ server.get('/', (req, res) => {
 })
 
 server.post('/', (req, res) => {
-  console.log('post', req.body)
   const carBody = req.body.car
   pool
     .query('SELECT * FROM cars WHERE body = ?', [carBody])
